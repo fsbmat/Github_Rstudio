@@ -20,6 +20,9 @@ Já está com o RStudio instalado e uma conta no Github? Ótimo, mas você não 
 O Git é um sistema de código aberto, e o GitHub, um serviço de hospedagem de repositórios Git baseado na web. 
 
 + No Rstudio vá em Tools -> Global options -> select Git;
+<center>
+![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/1.jpg)
+</center>
 
 + Acrescente o endereço para o executável do Git, o endereço, geralmente, é:
 
@@ -27,9 +30,17 @@ O Git é um sistema de código aberto, e o GitHub, um serviço de hospedagem de 
 
 + Em seguida crie uma chave RSA;
 
+![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/2.jpg)
+
 + Feche a janela e clique em View public key;
 
+![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/3.jpg)
+
 + Abra as configurações da sua conta no Github e clique na guia Chaves SSH. Clique em Adicionar chave SSH. Cole a chave pública que você copiou do RStudio.
+
+<center>
+![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/4.jpg)
+</center>
 
 Precisei fazer isso:
 <http://rmarkdown.rstudio.com>
