@@ -1,0 +1,45 @@
+---
+title: "Github, RStudio e Git"
+author: "Fernando Bastos"
+date: "15 de abril de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rstudio, Github e Git
+
+O controle de versão é essencial para quem está programando ou mesmo escrevendo um texto em latex ou em markdown. Assim vamos aprender a fazer isso no RStudio juntamente com o Git e o Github.
+ 
+Já está com o RStudio instalado e uma conta no Github? Ótimo, mas você não está pronto ainda. Mãos a obra!
+
++ Instale o Git (<https://git-scm.com/downloads>) no seu computador. 
+
+O Git é um sistema de código aberto, e o GitHub, um serviço de hospedagem de repositórios Git baseado na web. 
+
++ No Rstudio vá em Tools -> Global options -> select Git;
+
++ Acrescente o endereço para o executável do Git, o endereço, geralmente, é:
+
+<C:/Program Files (x86)/Git/bin/git.exe)>
+
++ Em seguida crie uma chave RSA;
+
++ Feche a janela e clique em View public key;
+
++ Abra as configurações da sua conta no Github e clique na guia Chaves SSH. Clique em Adicionar chave SSH. Cole a chave pública que você copiou do RStudio.
+
+Precisei fazer isso:
+<http://rmarkdown.rstudio.com>
+<http://gabsferreira.com/instalando-o-git-e-configurando-github/>
+
+Que é equivalente a:
+No RStudio, clique em Ferramentas -> Shell…. Entrar:
+git config --global user.email "mail@fsbmat.com"
+git config --global user.name "fsbmat"
+Use seu nome de usuário do GitHub.
+
+
+
