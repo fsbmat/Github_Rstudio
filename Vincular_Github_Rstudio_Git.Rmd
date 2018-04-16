@@ -32,9 +32,11 @@ O Git é um sistema de código aberto, e o GitHub, um serviço de hospedagem de 
 
 ![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/2.jpg)
 
+
 + Feche a janela e clique em View public key;
 
 ![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/3.jpg)
+
 
 + Abra as configurações da sua conta no Github e clique na guia Chaves SSH. Clique em Adicionar chave SSH. Cole a chave pública que você copiou do RStudio.
 
@@ -42,15 +44,61 @@ O Git é um sistema de código aberto, e o GitHub, um serviço de hospedagem de 
 ![](https://cdn.rawgit.com/fsbmat/Github_Rstudio/04c3e678/4.jpg)
 </center>
 
-Precisei fazer isso:
-<http://rmarkdown.rstudio.com>
-<http://gabsferreira.com/instalando-o-git-e-configurando-github/>
+1. Agora, abra o Git Bash e Digite o seguinte comando:
 
-Que é equivalente a:
-No RStudio, clique em Ferramentas -> Shell…. Entrar:
-git config --global user.email "mail@fsbmat.com"
-git config --global user.name "fsbmat"
-Use seu nome de usuário do GitHub.
+`ssh-keygen -t rsa -b 4096 -C "seu_email@dominio.com"`
 
+Troque o e-mail!
 
+O resultado será:
+
+`Generating public/private rsa key pair.`  
+`Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]`
+
+Você quer salvar a chave nesse arquivo mesmo, só dê enter. Ele então pede uma senha:
+
+`Enter passphrase (empty for no passphrase): [Type a passphrase]`  
+`Enter same passphrase again: [Type passphrase again]`
+
+Pode deixar sem se preferir. Só dê enter. Ou coloque a senha e confirme.
+
+Em seguida, você verá uma mensagem dizendo que deu tudo certo:
+
+`Your identification has been saved in /Users/you/.ssh/id_rsa.`  
+`# Your public key has been saved in /Users/you/.ssh/id_rsa.pub.`
+`#The key fingerprint is:`
+`# 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db seuemail@dominio.com`
+
+2- Agora, vamos adicionar a chave que criamos ao ssh-agent. Primeiro, vamos ativa-lo:
+
+`ssh-agent -s`
+
+Em seguida, adicione a chave que geramos ao ssh-agent:
+
+`ssh-add ~/.ssh/id_rsa`
+
+3- Agora, vamos associar a chave que geramos à nossa conta do Github. Para copiar a chave do bash, digite o seguinte comando:
+
+`clip < ~/.ssh/id_rsa.pub`
+
+A chave agora está no nosso ctrl+v. Abra o Github no navegador, faça o login e selecione a opção settings em seu menu. No menu lateral esquerdo, escolha a opção SSH Keys e depois clique no botão Add SSH key. Em title, coloque o nome que você achar conveniente, geralmente uso Git, para relacionar com a sua finalidade. Em key, cole a chave que você copiou do terminal com ctrl-v. Se não funcionar, volte uns passos acima e copie novamente. Clique em Add Key:
+
+Isso tudo foi feito para configurar seu Git com a sua conta do Github. Vamos ver se funcionou?
+
+Para testar a configuração digite o seguinte no Git Bash:
+
+`ssh -T git@github.com`
+
+O resultado deve ser:
+
+`The authenticity of host 'github.com (207.97.227.239)' can't be established.`  
+`# RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.`
+
+`# Are you sure you want to continue connecting (yes/no)?`
+
+Digite `yes` e aperte enter.
+
+`Hi username! You've successfully authenticated, but GitHub does not provide shell access.`
+
+Se algo tiver dado errado, tente seguir todos os passos novamente.
 
